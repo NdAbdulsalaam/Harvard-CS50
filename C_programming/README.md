@@ -5,6 +5,7 @@
 This repository contains solutions to C programming **coding exercises** in the course mentioned above.
 
 :mailbox_with_mail: 
+- This problem can be found at OpenCourseWare CS50
 - All the codes were tested and passed on the CS50 coding space
 - If you find any error or face any issue, let me know through issue section
 - The questions are as presented exactly in the course without any modification
@@ -22,8 +23,8 @@ This repository contains solutions to C programming **coding exercises** in the 
     - [x] [Substitution](#substitution)
 
 - **PROBLEM THREE:** 
-    - [x] [Mario](#mario)
-    - [x] [Credit](#credit)
+    - [x] [Plurality](#plurality)
+    - [x] [Tideman](#tideman)
 <br />
 
 # Mario
@@ -73,7 +74,7 @@ A credit (or debit) card, of course, is a plastic card with which you can pay fo
 
 Actually, that’s a bit of an exaggeration, because credit card numbers actually have some structure to them. All American Express numbers start with 34 or 37; most MasterCard numbers start with 51, 52, 53, 54, or 55 (they also have some other potential starting numbers which we won’t concern ourselves with for this problem); and all Visa numbers start with 4. But credit card numbers also have a “checksum” built into them, a mathematical relationship between at least one number and others. That checksum enables computers (or humans who like math) to detect typos (e.g., transpositions), if not fraudulent numbers, without having to query a database, which can be slow. Of course, a dishonest mathematician could certainly craft a fake number that nonetheless respects the mathematical constraint, so a database lookup is still necessary for more rigorous checks.
 
-## Luhn’s Algorithm
+## **Luhn**’s Algorithm
 So what’s the secret formula? Well, most cards use an algorithm invented by Hans Peter Luhn of IBM. According to Luhn’s algorithm, you can determine if a credit card number is (syntactically) valid as follows:
 
 1. Multiply every other digit by 2, starting with the number’s second-to-last digit, and then add those products’ digits together.
@@ -246,3 +247,150 @@ Design and implement a program, `substitution`, that encrypts messages using a s
 - Your program must output `ciphertext:` (without a newline) followed by the plaintext’s corresponding ciphertext, with each alphabetical character in the plaintext substituted for the corresponding character in the ciphertext; non-alphabetical characters should be outputted unchanged.
 - Your program must preserve case: capitalized letters must remain capitalized letters; lowercase letters must remain lowercase letters.
 - After outputting ciphertext, you should print a newline. Your program should then exit by returning `0` from `main`.
+<br />
+
+# Plurality
+Implement a program that runs a plurality election, per the below.
+```
+$ ./plurality Alice Bob Charlie
+Number of voters: 4
+Vote: Alice
+Vote: Bob
+Vote: Charlie
+Vote: Alice
+Alice
+```
+## Background
+Elections come in all shapes and sizes. In the UK, the [Prime Minister](https://www.parliament.uk/about/how/elections-and-voting/general/) is officially appointed by the monarch, who generally chooses the leader of the political party that wins the most seats in the House of Commons. The United States uses a multi-step [Electoral College](https://www.archives.gov/electoral-college/about) process where citizens vote on how each state should allocate Electors who then elect the President.
+
+Perhaps the simplest way to hold an election, though, is via a method commonly known as the “plurality vote” (also known as “first-past-the-post” or “winner take all”). In the plurality vote, every voter gets to vote for one candidate. At the end of the election, whichever candidate has the greatest number of votes is declared the winner of the election.
+
+## Specification
+Complete the implementation of `plurality.c` in such a way that the program simulates a plurality vote election.
+
+- Complete the `vote` function.
+    - `vote` takes a single argument, a `string` called `name`, representing the name of the candidate who was voted for.
+    - If `name` matches one of the names of the candidates in the election, then update that candidate’s vote total to account for the new vote. The `vote` function in this case should return `true` to indicate a successful ballot.
+    - If `name` does not match the name of any of the candidates in the election, no vote totals should change, and the `vote` function should return `false` to indicate an invalid ballot.
+    - You may assume that no two candidates will have the same name.
+- Complete the `print_winner` function.
+    - The function should print out the name of the candidate who received the most votes in the election, and then print a newline.
+    - It is possible that the election could end in a tie if multiple candidates each have the maximum number of votes. In that case, you should output the names of each of the winning candidates, each on a separate line.
+
+## Usage
+Your program should behave per the examples below.
+```
+$ ./plurality Alice Bob
+Number of voters: 3
+Vote: Alice
+Vote: Bob
+Vote: Alice
+Alice
+```
+```
+$ ./plurality Alice Bob
+Number of voters: 3
+Vote: Alice
+Vote: Charlie
+Invalid vote.
+Vote: Alice
+Alice
+```
+```
+$ ./plurality Alice Bob Charlie
+Number of voters: 5
+Vote: Alice
+Vote: Charlie
+Vote: Bob
+Vote: Bob
+Vote: Alice
+Alice
+Bob
+```
+<br/ >
+
+# Tideman
+Implement a program that runs a Tideman election in C, per the below.
+
+```
+$ ./tideman Alice Bob Charlie
+Number of voters: 5
+Rank 1: Alice
+Rank 2: Charlie
+Rank 3: Bob
+
+Rank 1: Alice
+Rank 2: Charlie
+Rank 3: Bob
+
+Rank 1: Bob
+Rank 2: Charlie
+Rank 3: Alice
+
+Rank 1: Bob
+Rank 2: Charlie
+Rank 3: Alice
+
+Rank 1: Charlie
+Rank 2: Alice
+Rank 3: Bob
+
+Charlie
+```
+
+## Background
+You already know about plurality elections, which follow a very simple algorithm for determining the winner of an election: every voter gets one vote, and the candidate with the most votes wins.
+
+But the plurality vote does have some disadvantages. What happens, for instance, in an election with three candidates, and the ballots below are cast?
+![Five ballots, tie betweeen Alice and Bob](1.png)
+
+A plurality vote would here declare a tie between Alice and Bob, since each has two votes. But is that the right outcome?
+
+There’s another kind of voting system known as a **ranked-choice voting system**. In a ranked-choice system, voters can vote for more than one candidate. Instead of just voting for their top choice, they can rank the candidates in order of preference. The resulting ballots might therefore look like the below.
+![Three ballots, with ranked preferences](2.png)
+
+Here, each voter, in addition to specifying their first preference candidate, has also indicated their second and third choices. And now, what was previously a tied election could now have a winner. The race was originally tied between Alice and Bob. But the voter who chose Charlie preferred Alice over Bob, so Alice could here be declared the winner.
+
+Ranked choice voting can also solve yet another potential drawback of plurality voting. Take a look at the following ballots.
+
+![Nine ballots, with ranked preferences](3.png)
+
+Who should win this election? In a plurality vote where each voter chooses their first preference only, Charlie wins this election with four votes compared to only three for Bob and two for Alice. (Note that, if you’re familiar with the instant runoff voting system, Charlie wins here under that system as well). Alice, however, might reasonably make the argument that she should be the winner of the election instead of Charlie: after all, of the nine voters, a majority (five of them) preferred Alice over Charlie, so most people would be happier with Alice as the winner instead of Charlie.
+
+Alice is, in this election, the so-called “Condorcet winner” of the election: the person who would have won any head-to-head matchup against another candidate. If the election had been just Alice and Bob, or just Alice and Charlie, Alice would have won.
+
+The Tideman voting method (also known as “ranked pairs”) is a ranked-choice voting method that’s guaranteed to produce the Condorcet winner of the election if one exists.
+
+Generally speaking, the Tideman method works by constructing a “graph” of candidates, where an arrow (i.e. edge) from candidate A to candidate B indicates that candidate A wins against candidate B in a head-to-head matchup. The graph for the above election, then, would look like the below.
+
+![Nine ballots, with ranked preferences](4.png)
+
+The arrow from Alice to Bob means that more voters prefer Alice to Bob (5 prefer Alice, 4 prefer Bob). Likewise, the other arrows mean that more voters prefer Alice to Charlie, and more voters prefer Charlie to Bob.
+
+Looking at this graph, the Tideman method says the winner of the election should be the “source” of the graph (i.e. the candidate that has no arrow pointing at them). In this case, the source is Alice — Alice is the only one who has no arrow pointing at her, which means nobody is preferred head-to-head over Alice. Alice is thus declared the winner of the election.
+
+It’s possible, however, that when the arrows are drawn, there is no Condorcet winner. Consider the below ballots.
+
+![Nine ballots, with ranked preferences](5.png)
+
+Between Alice and Bob, Alice is preferred over Bob by a 7-2 margin. Between Bob and Charlie, Bob is preferred over Charlie by a 5-4 margin. But between Charlie and Alice, Charlie is preferred over Alice by a 6-3 margin. If we draw out the graph, there is no source! We have a cycle of candidates, where Alice beats Bob who beats Charlie who beats Alice (much like a game of rock-paper-scissors). In this case, it looks like there’s no way to pick a winner.
+
+To handle this, the Tideman algorithm must be careful to avoid creating cycles in the candidate graph. How does it do this? The algorithm locks in the strongest edges first, since those are arguably the most significant. In particular, the Tideman algorithm specifies that matchup edges should be “locked in” to the graph one at a time, based on the “strength” of the victory (the more people who prefer a candidate over their opponent, the stronger the victory). So long as the edge can be locked into the graph without creating a cycle, the edge is added; otherwise, the edge is ignored.
+
+How would this work in the case of the votes above? Well, the biggest margin of victory for a pair is Alice beating Bob, since 7 voters prefer Alice over Bob (no other head-to-head matchup has a winner preferred by more than 7 voters). So the Alice-Bob arrow is locked into the graph first. The next biggest margin of victory is Charlie’s 6-3 victory over Alice, so that arrow is locked in next.
+
+Next up is Bob’s 5-4 victory over Charlie. But notice: if we were to add an arrow from Bob to Charlie now, we would create a cycle! Since the graph can’t allow cycles, we should skip this edge, and not add it to the graph at all. If there were more arrows to consider, we would look to those next, but that was the last arrow, so the graph is complete.
+
+This step-by-step process is shown below, with the final graph at right.
+
+![Nine ballots, with ranked preferences](6.png)
+
+Based on the resulting graph, Charlie is the source (there’s no arrow pointing towards Charlie), so Charlie is declared the winner of this election.
+
+Put more formally, the Tideman voting method consists of three parts:
+
+-   **Tally**: Once all of the voters have indicated all of their preferences, determine, for each pair of candidates, who the preferred candidate is and by what margin they are preferred.
+-   **Sort**: Sort the pairs of candidates in decreasing order of strength of victory, where strength of victory is defined to be the number of voters who prefer the preferred candidate.
+-   **Lock**: Starting with the strongest pair, go through the pairs of candidates in order and “lock in” each pair to the candidate graph, so long as locking in that pair does not create a cycle in the graph.
+
+Once the graph is complete, the source of the graph (the one with no edges pointing towards it) is the winner!
