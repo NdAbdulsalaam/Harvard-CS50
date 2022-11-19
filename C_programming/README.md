@@ -307,7 +307,7 @@ Vote: Alice
 Alice
 Bob
 ```
-<br/ >
+<br />
 
 # Tideman
 Implement a program that runs a Tideman election in C, per the below.
