@@ -342,18 +342,18 @@ Charlie
 You already know about plurality elections, which follow a very simple algorithm for determining the winner of an election: every voter gets one vote, and the candidate with the most votes wins.
 
 But the plurality vote does have some disadvantages. What happens, for instance, in an election with three candidates, and the ballots below are cast?
-![Five ballots, tie betweeen Alice and Bob](pics/1.png)
+![Five ballots, tie betweeen Alice and Bob](images/tideman1.png)
 
 A plurality vote would here declare a tie between Alice and Bob, since each has two votes. But is that the right outcome?
 
 There’s another kind of voting system known as a **ranked-choice voting system**. In a ranked-choice system, voters can vote for more than one candidate. Instead of just voting for their top choice, they can rank the candidates in order of preference. The resulting ballots might therefore look like the below.
-![Three ballots, with ranked preferences](pics/2.png)
+![Three ballots, with ranked preferences](images/tideman2.png)
 
 Here, each voter, in addition to specifying their first preference candidate, has also indicated their second and third choices. And now, what was previously a tied election could now have a winner. The race was originally tied between Alice and Bob. But the voter who chose Charlie preferred Alice over Bob, so Alice could here be declared the winner.
 
 Ranked choice voting can also solve yet another potential drawback of plurality voting. Take a look at the following ballots.
 
-![Nine ballots, with ranked preferences](pics/3.png)
+![Nine ballots, with ranked preferences](images/tideman3.png)
 
 Who should win this election? In a plurality vote where each voter chooses their first preference only, Charlie wins this election with four votes compared to only three for Bob and two for Alice. (Note that, if you’re familiar with the instant runoff voting system, Charlie wins here under that system as well). Alice, however, might reasonably make the argument that she should be the winner of the election instead of Charlie: after all, of the nine voters, a majority (five of them) preferred Alice over Charlie, so most people would be happier with Alice as the winner instead of Charlie.
 
@@ -363,7 +363,7 @@ The Tideman voting method (also known as “ranked pairs”) is a ranked-choice 
 
 Generally speaking, the Tideman method works by constructing a “graph” of candidates, where an arrow (i.e. edge) from candidate A to candidate B indicates that candidate A wins against candidate B in a head-to-head matchup. The graph for the above election, then, would look like the below.
 
-![Nine ballots, with ranked preferences](pics/4.png)
+![Nine ballots, with ranked preferences](images/tideman4.png)
 
 The arrow from Alice to Bob means that more voters prefer Alice to Bob (5 prefer Alice, 4 prefer Bob). Likewise, the other arrows mean that more voters prefer Alice to Charlie, and more voters prefer Charlie to Bob.
 
@@ -371,7 +371,7 @@ Looking at this graph, the Tideman method says the winner of the election should
 
 It’s possible, however, that when the arrows are drawn, there is no Condorcet winner. Consider the below ballots.
 
-![Nine ballots, with ranked preferences](pics/5.png)
+![Nine ballots, with ranked preferences](images/tideman5.png)
 
 Between Alice and Bob, Alice is preferred over Bob by a 7-2 margin. Between Bob and Charlie, Bob is preferred over Charlie by a 5-4 margin. But between Charlie and Alice, Charlie is preferred over Alice by a 6-3 margin. If we draw out the graph, there is no source! We have a cycle of candidates, where Alice beats Bob who beats Charlie who beats Alice (much like a game of rock-paper-scissors). In this case, it looks like there’s no way to pick a winner.
 
@@ -383,7 +383,7 @@ Next up is Bob’s 5-4 victory over Charlie. But notice: if we were to add an ar
 
 This step-by-step process is shown below, with the final graph at right.
 
-![Nine ballots, with ranked preferences](pics/6.png)
+![Nine ballots, with ranked preferences](images/tideman6.png)
 
 Based on the resulting graph, Charlie is the source (there’s no arrow pointing towards Charlie), so Charlie is declared the winner of this election.
 
