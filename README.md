@@ -18,7 +18,7 @@ This work is only meant for practicing and not to be copied for submision, as th
 
 - **WEEK ONE:** 
     - [x] [Mario](#mario)
-    - [x] [Credit](#credit)
+    - [x] [Credit Card](#credit)
   
 - **WEEK TWO:** 
     - [x] [Readability](#readability)
@@ -30,8 +30,20 @@ This work is only meant for practicing and not to be copied for submision, as th
 
 - **WEEK FOUR:** 
     - [x] [Volume](#volume)
-    - [x] [Filter](#watch-out)
+    - [x] [Filter Less](#watch-out)
     - [x] [Recover](#watch-out)
+  
+- **WEEK FIVE:** 
+    - [x] [Inheritance](#watch-out)
+    - [x] [Speller](#watch-out)
+
+- **WEEK SIX:** 
+    - [x] [World Cup](#watch-out)
+    - [x] [Mario](#watch-out)
+    - [x] [Credit Card](#watch-out)
+    - [x] [Readability](#watch-out)
+    - [x] [DNA](#watch-out)
+
 <br />
 
 # Mario
