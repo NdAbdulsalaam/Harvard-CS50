@@ -11,6 +11,8 @@ This repository contains solutions to C programming **coding exercises** in the 
 - The questions are as presented exactly in the course without any modification
 - If you don't find any solution to the practice quiz or module assessment, open an issue including the problem description and the week number. :fire:
 
+# DISCLAIMER
+This work is only meant for practicing and not to be copied for submision, as this violates the cs50's [academic honesty](https://cs50.harvard.edu/x/2021/honesty/). Howevre, uploading it to Github is considered to reasonable based on this [discussion](credit.chttps://www.reddit.com/r/cs50/comments/63235w/is_this_reasonable/)
 
 **Introduction to Computer Science** by the ***Harvard University.***
 
@@ -25,6 +27,11 @@ This repository contains solutions to C programming **coding exercises** in the 
 - **WEEK THREE:** 
     - [x] [Plurality](#plurality)
     - [x] [Tideman](#tideman)
+
+- **WEEK FOUR:** 
+    - [x] [Volume](#volume)
+    - [x] [Filter](#watch-out)
+    - [x] [Recover](#watch-out)
 <br />
 
 # Mario
@@ -68,8 +75,7 @@ Height: 4
 Notice that width of the “gap” between adjacent pyramids is equal to the width of two hashes, irrespective of the pyramids’ heights.
 <br />
 
-# Credit
-## Credit Cards
+# Credit Cards
 A credit (or debit) card, of course, is a plastic card with which you can pay for goods and services. Printed on that card is a number that’s also stored in a database somewhere, so that when your card is used to buy something, the creditor knows whom to bill. There are a lot of people with credit cards in this world, so those numbers are pretty long: American Express uses 15-digit numbers, MasterCard uses 16-digit numbers, and Visa uses 13- and 16-digit numbers. And those are decimal numbers (0 through 9), not binary, which means, for instance, that American Express could print as many as 10^15 = 1,000,000,000,000,000 unique cards! (That’s, um, a quadrillion.)
 
 Actually, that’s a bit of an exaggeration, because credit card numbers actually have some structure to them. All American Express numbers start with 34 or 37; most MasterCard numbers start with 51, 52, 53, 54, or 55 (they also have some other potential starting numbers which we won’t concern ourselves with for this problem); and all Visa numbers start with 4. But credit card numbers also have a “checksum” built into them, a mathematical relationship between at least one number and others. That checksum enables computers (or humans who like math) to detect typos (e.g., transpositions), if not fraudulent numbers, without having to query a database, which can be slow. Of course, a dishonest mathematician could certainly craft a fake number that nonetheless respects the mathematical constraint, so a database lookup is still necessary for more rigorous checks.
@@ -394,3 +400,30 @@ Put more formally, the Tideman voting method consists of three parts:
 -   **Lock**: Starting with the strongest pair, go through the pairs of candidates in order and “lock in” each pair to the candidate graph, so long as locking in that pair does not create a cycle in the graph.
 
 Once the graph is complete, the source of the graph (the one with no edges pointing towards it) is the winner!
+
+# Volume
+Write a program to modify the volume of an audio file.
+
+## Implementation Details
+Complete the implementation of `volume.c`, such that it changes the volume of a sound file by a given factor.
+
+- The program accepts three command-line arguments: `input` represents the name of the original audio file, `output` represents the name of the new audio file that should be generated, and `factor` is the amount by which the volume of the original audio file should be scaled.
+    - For example, if `factor` is `2.0`, then your program should double the volume of the audio file in `input` and save the newly generated audio file in `output`.
+- Your program should first read the header from the input file and write the header to the output file. Recall that this header is always exactly 44 bytes long.
+    - Note that `volume.c` already defines a variable for you called `HEADER_SIZE`, equal to the number of bytes in the header.
+- Your program should then read the rest of the data from the WAV file, one 16-bit (2-byte) sample at a time. Your program should multiply each sample by the `factor` and write the new sample to the output file.
+    - You may assume that the WAV file will use 16-bit signed values as samples. In practice, WAV files can have varying numbers of bits per sample, but we’ll assume 16-bit samples for this lab.
+
+> Your program should behave per the examples below.
+```
+$ ./volume input.wav output.wav 2.0
+```
+When you listen to `output.wav` (as by control-clicking on `output.wav` in the file browser, choosing **Download**, and then opening the file in an audio player on your computer), it should be twice as loud as `input.wav`!
+```
+$ ./volume input.wav output.wav 0.5
+```
+When you listen to `output.wav`, it should be half as loud as `input.wav`!
+
+<br>
+
+# WATCH OUT
