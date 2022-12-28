@@ -46,9 +46,10 @@ This work is only meant for practicing and not to be copied for submision, as th
 
 
 - **WEEK SEVEN:** 
-    - [x] [Songs](#readmore)
-    - [x] [Movies](#readmore)
-    - [x] [Fiftyville](#readmore)
+    - [x] [Songs](#read-more)
+    - [x] [Movies](#read-more)
+    - [x] [Fiftyville](#read-more)
+
 
 <br />
 
