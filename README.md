@@ -12,13 +12,13 @@ This repository contains solutions to C programming **coding exercises** in the 
 - If you don't find any solution to the practice quiz or module assessment, open an issue including the problem description and the week number. :fire:
 
 # DISCLAIMER
-This work is only meant for practicing and not to be copied for submision, as this violates the cs50's [academic honesty](https://cs50.harvard.edu/x/2021/honesty/). Howevre, uploading it to Github is considered to reasonable based on this [discussion](credit.chttps://www.reddit.com/r/cs50/comments/63235w/is_this_reasonable/)
+This work is only meant for practicing and not to be copied for submision, as this violates the cs50's [academic honesty](https://cs50.harvard.edu/x/2021/honesty/). Howevre, uploading it to Github is considered to reasonable based on this [discussion](https://www.reddit.com/r/cs50/comments/63235w/is_this_reasonable/)
 
 **Introduction to Computer Science** by the ***Harvard University.***
 
 - **WEEK ONE:** 
     - [x] [Mario](#mario)
-    - [x] [Credit Card](#credit)
+    - [x] [Credit](#credit)
   
 - **WEEK TWO:** 
     - [x] [Readability](#readability)
@@ -30,19 +30,25 @@ This work is only meant for practicing and not to be copied for submision, as th
 
 - **WEEK FOUR:** 
     - [x] [Volume](#volume)
-    - [x] [Filter Less](#watch-out)
-    - [x] [Recover](#watch-out)
+    - [x] [Filter Less](#read-more)
+    - [x] [Recover](#read-more)
   
 - **WEEK FIVE:** 
-    - [x] [Inheritance](#watch-out)
-    - [x] [Speller](#watch-out)
+    - [x] [Inheritance](#read-more)
+    - [x] [Speller](#read-more)
 
 - **WEEK SIX:** 
-    - [x] [World Cup](#watch-out)
-    - [x] [Mario](#watch-out)
-    - [x] [Credit Card](#watch-out)
-    - [x] [Readability](#watch-out)
-    - [x] [DNA](#watch-out)
+    - [x] [World Cup](#read-more)
+    - [x] [Mario](#read-more)
+    - [x] [Credit](#read-more)
+    - [x] [Readability](#read-more)
+    - [x] [DNA](#read-more)
+
+
+- **WEEK SEVEN:** 
+    - [x] [Songs](#readmore)
+    - [x] [Movies](#readmore)
+    - [x] [Fiftyville](#readmore)
 
 <br />
 
@@ -87,7 +93,7 @@ Height: 4
 Notice that width of the “gap” between adjacent pyramids is equal to the width of two hashes, irrespective of the pyramids’ heights.
 <br />
 
-# Credit Cards
+# Credit
 A credit (or debit) card, of course, is a plastic card with which you can pay for goods and services. Printed on that card is a number that’s also stored in a database somewhere, so that when your card is used to buy something, the creditor knows whom to bill. There are a lot of people with credit cards in this world, so those numbers are pretty long: American Express uses 15-digit numbers, MasterCard uses 16-digit numbers, and Visa uses 13- and 16-digit numbers. And those are decimal numbers (0 through 9), not binary, which means, for instance, that American Express could print as many as 10^15 = 1,000,000,000,000,000 unique cards! (That’s, um, a quadrillion.)
 
 Actually, that’s a bit of an exaggeration, because credit card numbers actually have some structure to them. All American Express numbers start with 34 or 37; most MasterCard numbers start with 51, 52, 53, 54, or 55 (they also have some other potential starting numbers which we won’t concern ourselves with for this problem); and all Visa numbers start with 4. But credit card numbers also have a “checksum” built into them, a mathematical relationship between at least one number and others. That checksum enables computers (or humans who like math) to detect typos (e.g., transpositions), if not fraudulent numbers, without having to query a database, which can be slow. Of course, a dishonest mathematician could certainly craft a fake number that nonetheless respects the mathematical constraint, so a database lookup is still necessary for more rigorous checks.
@@ -438,4 +444,17 @@ When you listen to `output.wav`, it should be half as loud as `input.wav`!
 
 <br>
 
-# WATCH OUT
+# READ MORE
+For projects not documented above, kindly follow the link of your interest to know more about it:
+- [Filter Less](https://cs50.harvard.edu/x/2022/psets/4/filter/less/)
+- [Recover](https://cs50.harvard.edu/x/2022/psets/4/recover/)
+- [Inheritance](https://cs50.harvard.edu/x/2022/labs/5/)
+- [Speller](https://cs50.harvard.edu/x/2022/psets/5/speller/)
+- [World Cup](https://cs50.harvard.edu/x/2022/labs/6/)
+- [Mario](https://cs50.harvard.edu/x/2022/psets/6/mario/more/)
+- [Credit](https://cs50.harvard.edu/x/2022/psets/6/credit/)
+- [Readability](https://cs50.harvard.edu/x/2022/psets/6/readability/)
+- [DNA](https://cs50.harvard.edu/x/2022/psets/6/dna/)
+- [Songs](https://cs50.harvard.edu/x/2022/labs/7/)
+- [Movies](https://cs50.harvard.edu/x/2022/psets/7/movies/)
+- [Fiftyville](https://cs50.harvard.edu/x/2022/psets/7/fiftyville/)
